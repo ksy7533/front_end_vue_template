@@ -1,2 +1,1 @@
 import "./monkeypatch";
-console.log("?");
