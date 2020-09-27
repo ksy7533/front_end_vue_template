@@ -15,6 +15,8 @@ module.exports = {
   modeConfigurer: function(projectConfigurer) {
     if (process.env.FRONT_MODE === "publish") {
       return merge.all([defaultOption, projectConfigurer]);
+    } else {
+      return merge.all([defaultOption, projectConfigurer]);
     }
   }
 };
