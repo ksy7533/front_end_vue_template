@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const path = require("path");
 const page = require(path.join(process.env.INIT_CWD, "/frontend/vue.page.js"));
 const TerserPlugin = require("terser-webpack-plugin");
@@ -37,6 +38,24 @@ module.exports = {
             terserOptions: { ie8: false }
           }
         ]);
+
+        return config.output
+          .jsonpFunction("ExampleJsonp") // jsonp 함수를 사용하기 위한 기능
+          .end()
+          .plugin("provide") // vue 전역에서 해당 모듈 임포트 하지않아도 사용가능
+          .use(webpack.ProvidePlugin, [
+            {
+              Cookies: "js-cookie/src/js.cookie.js"
+            }
+          ])
+          .end()
+          .plugin("define") // vue cli 환경설정내에서 정의한것을 vue내부에서도 사용가능
+          .use(webpack.DefinePlugin, [
+            {
+              "process.env": JSON.stringify(process.env)
+            }
+          ])
+          .end();
       }
     };
   }

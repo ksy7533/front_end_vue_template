@@ -8,7 +8,7 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 export default {
 	name: "Home",
@@ -18,6 +18,7 @@ export default {
 
 	created() {
 		console.log(Cookies.set());
+		console.log(process.env);
 	}
 };
 </script>
