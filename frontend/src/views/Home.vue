@@ -20,11 +20,13 @@ export default {
 		console.log(Cookies.set());
 		console.log(process.env);
 
-		Axios.get("test.com   /test/sdfasdfs/ccd?test='ddd'", {
+		Axios.get("/book", {
 			params: {
 				a: 1
 			}
-		}).then(() => {});
+		}).then(data => {
+			console.log(data);
+		});
 	}
 };
 </script>
