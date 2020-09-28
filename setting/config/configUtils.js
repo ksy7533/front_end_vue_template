@@ -11,10 +11,26 @@ global.ZUM_OPTION = merge(
 
 const defaultOption = getDefaultOption();
 
+const applyChain = (func, config) => (func ? func(config) : null);
+
 module.exports = {
   modeConfigurer: function(projectConfigurer) {
     if (process.env.FRONT_MODE === "publish") {
-      return merge.all([defaultOption, projectConfigurer]);
+      const requiredConfig = require(`./default/${process.env.FRONT_MODE}.config.js`);
+      // console.log(requiredConfig);
+
+      return merge.all([
+        defaultOption,
+        projectConfigurer,
+        requiredConfig,
+        {
+          chainWebpack: config => {
+            applyChain(defaultOption.chainWebpack, config);
+            applyChain(projectConfigurer.chainWebpack, config);
+            applyChain(requiredConfig.chainWebpack, config);
+          }
+        }
+      ]);
     } else {
       return merge.all([defaultOption, projectConfigurer]);
     }
