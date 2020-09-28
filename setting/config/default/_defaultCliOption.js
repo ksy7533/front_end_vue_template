@@ -45,7 +45,8 @@ module.exports = {
           .plugin("provide") // vue 전역에서 해당 모듈 임포트 하지않아도 사용가능
           .use(webpack.ProvidePlugin, [
             {
-              Cookies: "js-cookie/src/js.cookie.js"
+              Cookies: "js-cookie/src/js.cookie.js",
+              Axios: "axios/dist/axios.min.js"
             }
           ])
           .end()

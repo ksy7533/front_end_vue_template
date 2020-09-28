@@ -19,6 +19,12 @@ export default {
 	created() {
 		console.log(Cookies.set());
 		console.log(process.env);
+
+		Axios.get("test.com   /test/sdfasdfs/ccd?test='ddd'", {
+			params: {
+				a: 1
+			}
+		}).then(() => {});
 	}
 };
 </script>
