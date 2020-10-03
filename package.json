@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "frontend:publish": "cross-env FRONT_MODE=publish vue-cli-service serve",
+    "frontend:dev": "cross-env FRONT_MODE=dev vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -13,6 +14,7 @@
     "core-js": "^3.6.5",
     "cross-env": "^7.0.2",
     "deepmerge": "^4.2.2",
+    "http-proxy-middleware": "^1.0.5",
     "js-cookie": "^2.2.1",
     "terser-webpack-plugin": "^4.2.2",
     "vue": "^2.6.11",

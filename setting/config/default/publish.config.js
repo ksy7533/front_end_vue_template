@@ -2,11 +2,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 
-const stubPath = path.join(
-  process.env.INIT_CWD,
-  "./frontend/resources",
-  "./stub"
-);
+const stubPath = path.join(process.env.INIT_CWD, "./resources", "./stub");
 
 module.exports = {
   devServer: {
@@ -40,5 +36,8 @@ module.exports = {
         }
       });
     }
+  },
+  chainWebpack: config => {
+    config.optimization.delete("splitChunks");
   }
 };

@@ -15,7 +15,10 @@ const applyChain = (func, config) => (func ? func(config) : null);
 
 module.exports = {
   modeConfigurer: function(projectConfigurer) {
-    if (process.env.FRONT_MODE === "publish") {
+    if (
+      process.env.FRONT_MODE === "publish" ||
+      process.env.FRONT_MODE === "dev"
+    ) {
       const requiredConfig = require(`./default/${process.env.FRONT_MODE}.config.js`);
       // console.log(requiredConfig);
 

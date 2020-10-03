@@ -16,9 +16,10 @@ module.exports = function getPageConfig(pageObj) {
           pageObj[key].publishTemplate
         );
       }
-      delete pageObj[key].filename;
+      delete pageObj[key].filename; //build시 template파일 위치
     }
   });
 
+  console.log(pageObj);
   return pageObj;
 };

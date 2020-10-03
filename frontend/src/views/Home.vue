@@ -24,7 +24,7 @@ export default {
 			params: {
 				a: 1
 			}
-		}).then(data => {
+		}).then(({ data }) => {
 			console.log(data);
 		});
 	}
